@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"target": "ESNext",
+		"noImplicitAny": true,
+		"preserveConstEnums": true,
+		"declaration": false,
+		"sourceMap": true,
+		"resolveJsonModule": true,
+		"types": ["node", "jest"],
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true
+	},
+	"exclude": ["node_modules", "dist"]
+}

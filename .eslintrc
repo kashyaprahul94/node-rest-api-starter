@@ -1,0 +1,17 @@
+{
+	"root": true,
+	"ignorePatterns": ["node_modules", "dist"],
+	"parser": "@typescript-eslint/parser",
+	"env": {
+		"node": true,
+		"jest/globals": true
+	},
+	"plugins": ["jest", "prettier", "@typescript-eslint"],
+	"extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+	"rules": {
+		"prettier/prettier": "off",
+		"curly": "warn",
+		"@typescript-eslint/no-explicit-any": "off",
+		"@typescript-eslint/no-var-requires": "off"
+	}
+}
