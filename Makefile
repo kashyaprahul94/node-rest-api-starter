@@ -1,3 +1,9 @@
+.PHONY: clean_build
+clean_build:
+	rm -rf src/*.js; rm -rf src/*.js.map; rm -rf src/**/*.js; rm -rf src/**/*.js.map
+
+#####################
+
 # To build the application for production machines where production build is used with production configurations
 .PHONY: build
 build:
@@ -7,12 +13,6 @@ build:
 .PHONY: build_staging
 build_staging:
 	NODE_ENV=production CONFIG_ENV=development npm run build
-
-# To build the application for dev env
-.PHONY: build_dev
-build_dev:
-	NODE_ENV=development CONFIG_ENV=development npm run build
-
 
 #####################
 
@@ -24,7 +24,7 @@ production: build
 # Build the application for staging & run the server
 .PHONY: staging
 staging: build_staging
-	NODE_ENV=production CONFIG_ENV=staging npm run start
+	NODE_ENV=production CONFIG_ENV=development npm run start
 
 # Run the application with live reload server
 .PHONY: dev
