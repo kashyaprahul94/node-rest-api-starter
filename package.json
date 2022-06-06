@@ -4,28 +4,40 @@
 	"description": "A REST API starter project for Node.JS",
 	"repository": "https://github.com/kashyaprahul94/node-rest-api-starter",
 	"scripts": {
+		"dev": "nodemon",
+		"start": "node -r dotenv/config src/index.js",
+		"build": "npm run compile",
 		"compile": "npx tsc --project ./tsconfig.prod.json",
-		"watch": "npm run compile -- --watch",
-		"test:unit": "npx jest --verbose",
-		"test:coverage": "npm run test:unit -- --coverage"
+		"lint": "npx eslint . --ext .js,.ts",
+		"lint:fix": "npm run lint -- --fix",
+		"format": "npx prettier 'src/**/*.(js|ts)'",
+		"format:fix": "npm run format -- -w",
+		"test:unit": "jest",
+		"test:unit:watch": "jest --watch"
 	},
 	"dependencies": {
-		"axios": "0.27.2"
+		"axios": "0.27.2",
+		"body-parser": "1.20.0",
+		"express": "4.18.1"
 	},
 	"devDependencies": {
+		"@types/express": "4.17.13",
 		"@types/jest": "27.5.1",
 		"@types/node": "17.0.36",
 		"@typescript-eslint/eslint-plugin": "5.27.0",
 		"@typescript-eslint/parser": "5.27.0",
+		"dotenv": "16.0.1",
+		"eslint": "8.16.0",
 		"eslint-config-prettier": "8.5.0",
 		"eslint-plugin-jest": "26.4.6",
 		"eslint-plugin-prettier": "4.0.0",
-		"eslint": "8.16.0",
 		"fast-glob": "3.2.11",
 		"jest": "28.1.0",
+		"nodemon": "2.0.16",
 		"prettier": "2.6.2",
 		"ts-jest": "28.0.3",
 		"ts-node": "10.8.0",
+		"tsconfig-paths": "4.0.0",
 		"typescript": "4.7.2"
 	}
 }

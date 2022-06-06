@@ -58,3 +58,7 @@ typings/
 .env.test
 .env.prod
 
+# TS transpiled files
+
+src/**/*.js
+src/**/*.js.map
