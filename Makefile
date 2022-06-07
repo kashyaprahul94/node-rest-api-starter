@@ -1,6 +1,6 @@
 .PHONY: clean_build
 clean_build:
-	rm -rf src/*.js; rm -rf src/*.js.map; rm -rf src/**/*.js; rm -rf src/**/*.js.map
+	find ./src -type f -name '*.js' -delete; find ./src -type f -name '*.js.map' -delete
 
 #####################
 
