@@ -1,7 +1,9 @@
 import type { Request, Response } from "express";
 
+import { getRestrictedContentData } from "./service";
+
 export const getRestrictedContent = async (req: Request, res: Response) => {
-	res.status(200).json({
-		result: "This is a restricted content",
-	});
+	const result = await getRestrictedContentData();
+
+	res.status(200).json(result);
 };
