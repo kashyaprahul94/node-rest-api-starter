@@ -1,11 +1,10 @@
 import Config from "@/config";
 
 import { clusterClient as redisClusterClient } from "@/core/persistence/redis";
+import { HttpServer } from "@/core/server";
 
 import { getRouter } from "@/features/router";
 import { getRouter as getAdminRouter } from "@/features/admin/router";
-
-import { HttpServer } from "./server";
 
 const prepareHttpServer = () => {
 	const server = new HttpServer({
@@ -37,7 +36,5 @@ const preparePersistence = async () => {
 export const boot = async () => {
 	await preparePersistence();
 
-	const httpServer = prepareHttpServer();
-
-	httpServer.boot();
+	prepareHttpServer().boot();
 };
