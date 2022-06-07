@@ -1,7 +1,13 @@
 import CommonConfig from "./common";
-import ProductionConfig from "./production";
 
 export type CommonConfigType = typeof CommonConfig;
-export type EnvConfigType = typeof ProductionConfig;
+export type EnvConfigType = {
+	FILES_BUCKET: string;
+
+	REDIS: {
+		HOST: string;
+		PORT: string | number;
+	};
+};
 
 export type AppConfigType = CommonConfigType & EnvConfigType;

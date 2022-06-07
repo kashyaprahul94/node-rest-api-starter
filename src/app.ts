@@ -1,8 +1,11 @@
 import Config from "@/config";
 
-import { HttpServer } from "./server";
+import { clusterClient as redisClusterClient } from "@/core/persistence/redis";
+
 import { getRouter } from "@/features/router";
 import { getRouter as getAdminRouter } from "@/features/admin/router";
+
+import { HttpServer } from "./server";
 
 const prepareHttpServer = () => {
 	const server = new HttpServer({
@@ -18,7 +21,22 @@ const prepareHttpServer = () => {
 	return server;
 };
 
+const prepareRedis = async () => {
+	redisClusterClient.init({
+		host: Config.REDIS.HOST,
+		port: Config.REDIS.PORT,
+	});
+
+	return redisClusterClient.onceReady();
+};
+
+const preparePersistence = async () => {
+	await prepareRedis().then(() => console.info("Connected to Redis!"));
+};
+
 export const boot = async () => {
+	await preparePersistence();
+
 	const httpServer = prepareHttpServer();
 
 	httpServer.boot();
