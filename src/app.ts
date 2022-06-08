@@ -1,6 +1,7 @@
 import Config from "@/config";
 
 import { clusterClient as redisClusterClient } from "@/core/persistence/redis";
+import { poolClient as mysqlPoolClient } from "@/core/persistence/mysql";
 import { HttpServer } from "@/core/server";
 
 import { getRouter } from "@/features/router";
@@ -29,8 +30,23 @@ const prepareRedis = async () => {
 	return redisClusterClient.onceReady();
 };
 
+const prepareMySQL = async () => {
+	mysqlPoolClient.init({
+		host: Config.MYSQL.PRIMARY.HOST,
+		port: Config.MYSQL.PRIMARY.PORT,
+		user: Config.MYSQL.PRIMARY.USER,
+		password: Config.MYSQL.PRIMARY.PASSWORD,
+		dbName: Config.MYSQL.PRIMARY.DB_NAME,
+	});
+
+	return mysqlPoolClient.onceReady();
+};
+
 const preparePersistence = async () => {
-	await prepareRedis().then(() => console.info("Connected to Redis!"));
+	await Promise.all([
+		prepareRedis().then(() => console.info("Connected to Redis!")),
+		prepareMySQL().then(() => console.info("Connected to MySQL!")),
+	]);
 };
 
 export const boot = async () => {

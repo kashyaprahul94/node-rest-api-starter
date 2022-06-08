@@ -1,5 +1,7 @@
+import { getConfigValue } from "./helper";
+
 const config = {
-	HTTP_PORT: process.env.HTTP_PORT,
+	HTTP_PORT: getConfigValue("HTTP_PORT", true),
 } as const;
 
 export default config;

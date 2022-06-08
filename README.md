@@ -22,7 +22,7 @@ $ cp .env.example .env
 
 ### Production values
 
-These values can directly be put inside [src/config/production.ts](src/config/production.ts) file which is version controlled. It needs to adheres to the type definition.
+These values are referred from environment variables and are defined inside [src/config/production.ts](src/config/production.ts) file which is version controlled and common to all setups. It needs to adheres to the same type definition.
 
 ### Development values
 

@@ -16,7 +16,7 @@ class RedisClusterClient {
 		]);
 	}
 
-	public onceReady() {
+	public async onceReady() {
 		return new Promise((resolve) => {
 			this.client.on("connect", resolve);
 		});
