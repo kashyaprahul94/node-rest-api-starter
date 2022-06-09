@@ -3,6 +3,7 @@ import Config from "@/config";
 import { clusterClient as redisClusterClient } from "@/core/persistence/redis";
 import { poolClient as mysqlPoolClient } from "@/core/persistence/mysql";
 import { client as mongodbClient } from "@/core/persistence/mongodb";
+import { client as elasticSearchClient } from "@/core/persistence/elastic-search";
 import { HttpServer } from "@/core/server";
 
 import { getRouter } from "@/features/router";
@@ -54,11 +55,22 @@ const prepareMongoDB = async () => {
 	return mongodbClient.onceReady();
 };
 
+const prepareElasticSearch = async () => {
+	elasticSearchClient.init({
+		node: Config.ELASTIC_SEARCH.NODE,
+	});
+
+	return elasticSearchClient.onceReady();
+};
+
 const preparePersistence = async () => {
 	await Promise.all([
 		prepareRedis().then(() => console.info("Connected to Redis!")),
 		prepareMySQL().then(() => console.info("Connected to MySQL!")),
 		prepareMongoDB().then(() => console.info("Connected to MongoDB!")),
+		prepareElasticSearch().then(() =>
+			console.info("Connected to ElasticSearch!")
+		),
 	]);
 };
 

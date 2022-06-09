@@ -20,8 +20,7 @@ export type EnvConfigType = {
 	MONGO: IMongoDBConfig;
 
 	ELASTIC_SEARCH: {
-		readonly HOST: string;
-		readonly PORT: string | number;
+		readonly NODE: string;
 	};
 };
 

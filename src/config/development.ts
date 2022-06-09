@@ -45,8 +45,7 @@ const config: EnvConfigType = {
 	},
 
 	ELASTIC_SEARCH: {
-		HOST: getConfigValue("ELASTIC_SEARCH__CLUSTER_HOST"),
-		PORT: getConfigValue("ELASTIC_SEARCH__CLUSTER_PORT"),
+		NODE: getConfigValue("ELASTIC_SEARCH__CLUSTER_NODE"),
 	},
 } as const;
 

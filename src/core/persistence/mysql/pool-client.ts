@@ -16,6 +16,8 @@ class MySQLPoolClient {
 			password,
 			database: dbName,
 			connectionLimit: 50,
+			charset: "utf8mb4",
+			timezone: "Local",
 		});
 
 		this.poolClient.on("acquire", (connection) => {

@@ -16,7 +16,7 @@
 		"test:unit:watch": "jest --watch"
 	},
 	"dependencies": {
-		"@elastic/elasticsearch": "8.2.1",
+		"@elastic/elasticsearch": "7.1.0",
 		"axios": "0.27.2",
 		"body-parser": "1.20.0",
 		"dotenv": "16.0.1",
@@ -28,21 +28,21 @@
 	},
 	"devDependencies": {
 		"@types/express": "4.17.13",
-		"@types/jest": "27.5.1",
+		"@types/jest": "28.1.1",
 		"@types/mysql": "^2.15.21",
-		"@types/node": "17.0.36",
-		"@typescript-eslint/eslint-plugin": "5.27.0",
-		"@typescript-eslint/parser": "5.27.0",
-		"eslint": "8.16.0",
+		"@types/node": "17.0.41",
+		"@typescript-eslint/eslint-plugin": "5.27.1",
+		"@typescript-eslint/parser": "5.27.1",
+		"eslint": "8.17.0",
 		"eslint-config-prettier": "8.5.0",
-		"eslint-plugin-jest": "26.4.6",
+		"eslint-plugin-jest": "26.5.3",
 		"eslint-plugin-prettier": "4.0.0",
 		"fast-glob": "3.2.11",
-		"jest": "28.1.0",
+		"jest": "28.1.1",
 		"nodemon": "2.0.16",
 		"prettier": "2.6.2",
-		"ts-jest": "28.0.3",
-		"ts-node": "10.8.0",
-		"typescript": "4.7.2"
+		"ts-jest": "28.0.4",
+		"ts-node": "10.8.1",
+		"typescript": "4.7.3"
 	}
 }
