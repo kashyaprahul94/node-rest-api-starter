@@ -37,6 +37,11 @@ const config: EnvConfigType = {
 			DB_NAME: getConfigValue("MONGODB__EN_DB_NAME"),
 			DB_OPTIONS: "",
 		},
+		hi: {
+			NODES: [],
+			DB_NAME: "",
+			DB_OPTIONS: "",
+		},
 	},
 
 	ELASTIC_SEARCH: {

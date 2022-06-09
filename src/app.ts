@@ -2,6 +2,7 @@ import Config from "@/config";
 
 import { clusterClient as redisClusterClient } from "@/core/persistence/redis";
 import { poolClient as mysqlPoolClient } from "@/core/persistence/mysql";
+import { client as mongodbClient } from "@/core/persistence/mongodb";
 import { HttpServer } from "@/core/server";
 
 import { getRouter } from "@/features/router";
@@ -42,10 +43,22 @@ const prepareMySQL = async () => {
 	return mysqlPoolClient.onceReady();
 };
 
+const prepareMongoDB = async () => {
+	mongodbClient.init({
+		lang: "en",
+		dbName: Config.MONGO.en.DB_NAME,
+		nodes: Config.MONGO.en.NODES,
+		options: Config.MONGO.en.DB_OPTIONS,
+	});
+
+	return mongodbClient.onceReady();
+};
+
 const preparePersistence = async () => {
 	await Promise.all([
 		prepareRedis().then(() => console.info("Connected to Redis!")),
 		prepareMySQL().then(() => console.info("Connected to MySQL!")),
+		prepareMongoDB().then(() => console.info("Connected to MongoDB!")),
 	]);
 };
 
